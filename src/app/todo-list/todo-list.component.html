@@ -4,7 +4,7 @@
       <h1>
         {{ title }}
       </h1>
-      @if (!!allTodos.length) { There are open todos:
+      @if (!!allTodos.length) { There are open to-dos:
       <ul>
         @for (todo of allTodos; track $index) {
         <app-todo-item-component
@@ -14,7 +14,7 @@
         }
       </ul>
       <p class="my-2">
-        You can see all to dos already done
+        You can see all to-dos, which are marked as done
         <a
           class="link-primary"
           routerLink="/done"
@@ -24,7 +24,7 @@
         >
       </p>
       } @else { There is nothing to do. Please enjoy your day! 🎉 }
-      <p>Here you can add more to dos:</p>
+      <p>Here you can add more to-dos:</p>
       <app-todo-input></app-todo-input>
     </div>
   </div>

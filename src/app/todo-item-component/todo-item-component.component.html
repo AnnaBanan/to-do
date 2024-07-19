@@ -1,9 +1,0 @@
-<li class="py-2 fs-5">
-    @if (!edit){
-    <span>{{openTodo}}</span>
-    <button type="submit" (click)="deleteTodoItem()" class="btn btn-primary btn-sm ms-2">done</button>
-    <button type="submit" (click)="edit = true" class="btn btn-secondary btn-sm ms-2">edit</button>
-    } @else {
-        <input type="text" class="form-control" value={{openTodo}} #editInput (keydown.enter)="changeTodo()">
-    }
-</li>

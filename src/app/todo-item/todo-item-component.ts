@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { TodoServiceService } from '../todo-service.service';
+import { TodoServiceService } from '../services/todo-service.service';
 
 @Component({
   selector: 'app-todo-item-component',
   standalone: true,
   imports: [],
-  templateUrl: './todo-item-component.component.html',
-  styleUrl: './todo-item-component.component.scss',
+  templateUrl: './todo-item-component.html',
+  styleUrl: './todo-item-component.scss',
 })
-export class TodoItemComponentComponent {
+export class TodoItemComponent {
   @Input() openTodo = '';
   @Input() id: number;
   edit: boolean = false;

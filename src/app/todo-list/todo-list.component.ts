@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TodoServiceService } from '../todo-service.service';
-import { TodoItemComponentComponent } from '../todo-item-component/todo-item-component.component';
+import { TodoServiceService } from '../services/todo-service.service';
+import { TodoItemComponent } from '../todo-item/todo-item-component';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
@@ -10,7 +10,7 @@ import { RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [
     TodoInputComponent,
-    TodoItemComponentComponent,
+    TodoItemComponent,
     RouterLink,
     RouterLinkActive,
   ],
@@ -23,6 +23,10 @@ export class TodoListComponent {
   val = '';
 
   constructor(private todoService: TodoServiceService) {
-    this.allTodos = todoService.allTodos;
+  }
+
+  ngOnInit() {
+    this.todoService.initTodoService();
+    this.allTodos = this.todoService.todosArray;
   }
 }

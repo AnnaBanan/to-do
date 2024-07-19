@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoServiceService } from '../todo-service.service';
+import { TodoServiceService } from '../services/todo-service.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
