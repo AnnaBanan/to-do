@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoServiceService } from '../services/todo-service.service';
+import { TodoService } from '../services/todo.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodoInputComponent {
   name: string = '';
-  constructor (private todoService: TodoServiceService) {}
+  constructor (private todoService: TodoService) {}
 
   updateTodos() {
     this.todoService.addTodo(this.name);

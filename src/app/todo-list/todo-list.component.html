@@ -4,7 +4,7 @@
       <h1>
         {{ title }}
       </h1>
-      @if (!!allTodos.length) { There are open to-dos:
+      @if (allTodos.length > 0) { There are open to-dos:
       <ul>
         @for (todo of allTodos; track $index) {
         <app-todo-item-component

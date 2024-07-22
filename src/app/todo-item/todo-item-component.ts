@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { TodoServiceService } from '../services/todo-service.service';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todo-item-component',
@@ -11,13 +11,14 @@ import { TodoServiceService } from '../services/todo-service.service';
 export class TodoItemComponent {
   @Input() openTodo = '';
   @Input() id: number;
+  @Input() withActions: boolean = true;
   edit: boolean = false;
   @ViewChild('editInput') editInputElement: ElementRef;
 
-  constructor(private todoService: TodoServiceService) {}
+  constructor(private todoService: TodoService) {}
 
   deleteTodoItem() {
-    this.todoService.deleteTodo(this.id);
+    this.todoService.deleteTodo(this.openTodo, this.id);
   }
 
   editTodoItem() {

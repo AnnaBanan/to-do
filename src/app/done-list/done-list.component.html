@@ -1,4 +1,20 @@
-<p>done-list works!</p>
+@if (doneItems.length > 0) { 
+  Great job! Here are your done to-dos: 
+  <ul>
+    @for (item of doneItems; track $index) {
+      <app-todo-item-component
+        [openTodo]="item"
+        [id]="$index"
+        [withActions]="false"
+      ></app-todo-item-component>
+    }
+  </ul>
+  Permanently delete all done to-dos: 
+  <button type="submit" (click)="deleteAllDoneItems()" class="btn btn-danger">delete all</button>
+} @else {
+  Nothing marked as done yet :(
+}
+
 <p>
   Go back and see if there are open to-dos on your
   <a

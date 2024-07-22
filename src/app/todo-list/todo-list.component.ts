@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TodoServiceService } from '../services/todo-service.service';
+import { TodoService } from '../services/todo.service';
 import { TodoItemComponent } from '../todo-item/todo-item-component';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { RouterLink } from '@angular/router';
@@ -22,7 +22,7 @@ export class TodoListComponent {
   allTodos: string[];
   val = '';
 
-  constructor(private todoService: TodoServiceService) {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit() {
