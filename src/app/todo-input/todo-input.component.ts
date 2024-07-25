@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { FormsModule } from '@angular/forms';
 
@@ -10,11 +10,11 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule]
 })
 export class TodoInputComponent {
-  name: string = '';
+  name: WritableSignal<string> =  signal('');
   constructor (private todoService: TodoService) {}
 
   updateTodos() {
-    this.todoService.addTodo(this.name);
-    this.name='';
+    this.todoService.addTodo(this.name());
+    this.name.set('');
   }
 }
