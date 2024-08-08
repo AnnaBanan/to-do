@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-5 mx-auto">
+    <div class="col-12 col-md-7 mx-auto">
       <h1>
         {{ title }}
       </h1>
-      @if (allTodos.length > 0) { There are open to-dos:
+      @if (allTodos.length > 0) { There 
+        @if(allTodos.length === 1) {is}@else{are} {{allTodos.length}} open  @if(allTodos.length === 1) {to-do}@else{to-dos}:
       <ul>
         @for (todo of allTodos; track $index) {
         <app-todo-item-component
@@ -23,7 +24,8 @@
           >here</a
         >
       </p>
-      } @else { There is nothing to do. Please enjoy your day! 🎉 }
+      } @else { <p class="my-5">There is nothing to do. Please enjoy your day! 🎉</p> }
+      <hr />
       <p>Here you can add more to-dos:</p>
       <app-todo-input></app-todo-input>
     </div>

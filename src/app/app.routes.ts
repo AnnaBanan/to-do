@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 export const routes: Routes = [
   { path: 'done', component: DoneListComponent },
-  { path: 'todo', component: TodoListComponent },
-  { path: '', redirectTo: '/todo', pathMatch: 'full' }, // redirect to `todo`
+  { path: '', component: TodoListComponent },
+  // { path: '', redirectTo: '/todo', pathMatch: 'full' }, we dont need to redirect to `todo`
   { path: '**', component: PageNotFoundComponent }, // Wildcard route for a 404 page
 ];

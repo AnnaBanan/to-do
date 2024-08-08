@@ -27,6 +27,6 @@ export class TodoListComponent {
 
   ngOnInit() {
     this.todoService.initTodoService();
-    this.allTodos = this.todoService.todosArray;
+    this.allTodos = this.todoService.todosArray();
   }
 }

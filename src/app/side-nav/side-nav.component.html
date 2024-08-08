@@ -1,0 +1,21 @@
+<div class="side-nav" [ngClass]="{'active': menuService.isActive()}">
+  <h4>To Do Lists</h4>
+  @if (todoLists.length === 0){
+  <p>No to do lists found</p>
+  }@else {
+  <nav>
+    @for (todoList of todoLists; track $index){
+    <h5>
+      <a href="/todo-list/$index">{{ todoList.title }}</a>
+    </h5>
+    <ul>
+      @for (todo of todoList.todos; track $index){
+      <li>
+        {{ todo }}
+      </li>
+      }
+    </ul>
+    }
+  </nav>
+  }
+</div>

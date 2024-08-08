@@ -35,7 +35,7 @@ $enable-shadows: true;
 $body-color: #333;
 $body-bg: #fff;
 $border-radius: .4rem;
-$success: #7952b3;
+$primary: #6b26d1;
 
 // Required
 @import "bootstrap/scss/variables";
@@ -87,8 +87,5 @@ $success: #7952b3;
 // Custom styles
 //
 
-// @import "icon-list";
 
-body {
-  padding: 1.5rem;
-}
+// @import "icon-list";

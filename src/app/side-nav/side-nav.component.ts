@@ -1,0 +1,31 @@
+import { Component, Input } from '@angular/core';
+import { TodoList } from '../types';
+import { CommonModule } from '@angular/common';
+import { MenuService } from '../services/menu.service';
+
+@Component({
+  selector: 'app-side-nav',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './side-nav.component.html',
+  styleUrl: './side-nav.component.scss'
+})
+export class SideNavComponent {
+
+  todoLists: TodoList[] = [
+    {
+      title: 'Groceries',
+      todos: ['Eggs', 'Bread', 'Milk']
+    },
+    {
+      title: 'Chores',
+      todos: ['Vacuum', 'Dishes', 'Laundry']
+    },
+    {
+      title: 'Work',
+      todos: ['Update docs', 'Email boss', 'Submit PR']
+    }
+  ];
+
+  constructor(public menuService: MenuService) { }
+}
