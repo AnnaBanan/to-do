@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { TodoItemComponent } from '../todo-item/todo-item-component';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -21,12 +21,37 @@ export class TodoListComponent {
   title = 'To-do List';
   allTodos: string[];
   val = '';
+  TodoList: boolean;
+  id = Number(this.route.snapshot.paramMap.get('index'));
 
-  constructor(private todoService: TodoService) {
+
+  constructor(
+    private todoService: TodoService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
     this.todoService.initTodoService();
-    this.allTodos = this.todoService.todosArray();
+    this.getTodoList(this.id);
   }
+
+  ngDoCheck() {
+    const id = Number(this.route.snapshot.paramMap.get('index'));
+    if (id !== this.id) {
+      this.id = id;
+      this.getTodoList(id);
+    }
+  }
+  
+  getTodoList(id: number) {
+    if (this.todoService.todoListsArray().length >= id) { 
+      this.TodoList = true;
+      this.allTodos = this.todoService.todoListsArray()[id].todos;
+    } 
+    else { 
+      this.TodoList = false;
+    }
+  }
+  
 }

@@ -2,11 +2,13 @@ import { Component, Input } from '@angular/core';
 import { TodoList } from '../types';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../services/menu.service';
+import { RouterLink } from '@angular/router';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.scss'
 })
@@ -24,8 +26,21 @@ export class SideNavComponent {
     {
       title: 'Work',
       todos: ['Update docs', 'Email boss', 'Submit PR']
+    },
+    {
+      title: 'heute',
+      todos: ['Kongs', 'Spülmaschine', 'Wäsche aufräumen', 'Balkon putzen']
     }
   ];
 
-  constructor(public menuService: MenuService) { }
+  constructor(
+    public menuService: MenuService,
+    private todoService: TodoService
+  ) { }
+
+  ngOnInit() {
+    this.todoLists.forEach(list => {
+      this.todoService.addTodoList(list);
+    });
+  }
 }

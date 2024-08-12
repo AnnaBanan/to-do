@@ -6,7 +6,9 @@
   <nav>
     @for (todoList of todoLists; track $index){
     <h5>
-      <a href="/todo-list/$index">{{ todoList.title }}</a>
+        <a [routerLink]="['/todo-list', $index]">
+            {{ todoList.title }}
+        </a>
     </h5>
     <ul>
       @for (todo of todoList.todos; track $index){
