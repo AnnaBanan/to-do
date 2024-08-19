@@ -13,8 +13,7 @@ import { TodoService } from '../services/todo.service';
   styleUrl: './side-nav.component.scss'
 })
 export class SideNavComponent {
-
-  todoLists: TodoList[] = [
+  todoListsMock: TodoList[] = [
     {
       title: 'Groceries',
       todos: ['Eggs', 'Bread', 'Milk']
@@ -35,12 +34,15 @@ export class SideNavComponent {
 
   constructor(
     public menuService: MenuService,
-    private todoService: TodoService
+    public todoService: TodoService
   ) { }
 
   ngOnInit() {
-    this.todoLists.forEach(list => {
+    this.todoListsMock.forEach(list => {
       this.todoService.addTodoList(list);
     });
+
   }
+
+
 }

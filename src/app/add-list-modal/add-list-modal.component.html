@@ -1,0 +1,38 @@
+<div class="modal fade" id="addListModal" tabindex="-1" aria-labelledby="addListModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add a new to-do list</h5>
+            </div>
+            <div class="modal-body">
+                <p>Enter the title for your list:</p>
+                <input class="form-control mb-3" type="text" placeholder="Enter a new title" [(ngModel)]="title" #titleInput="ngModel" (keydown.enter)="updateTitle()"/>
+                <p>Add all your todos here:</p>
+                <app-todo-input [activeList]="newList"></app-todo-input>
+
+                <!-- @if(){ -->
+                    <hr>
+                    <p>Here you can see a preview of your new list:</p>
+
+                    <div class="card shadow-sm mx-2">
+                        <div class="card-body">
+                            <h5 class="card-title">{{newList.title}}</h5>
+                            <ul>
+                                @for (todo of newList.todos; track $index) {
+                                <app-todo-item-component
+                                  [openTodo]="todo"
+                                  [id]="$index"
+                                ></app-todo-item-component>
+                                }
+                              </ul>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="saveList()">Save to-do list</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,8 +19,8 @@
     @include media-breakpoint-up(md) {
         padding-top: $headerHeight;
         color: $light;
-        background: #6b26d1; /* Solid color for the first 56px */
-        background: linear-gradient(180deg, rgba(107,38,209,1) 0%, rgba(107,38,209,1) $headerHeight, rgba(124,78,193,1) 100%);
+        background: $primary; /* Solid color for the first 56px */
+        background: linear-gradient(180deg, $primary 0%, $primary $headerHeight, rgba(124,78,193,1) 100%);
         height: 100vh;
 
         a{ color: $light; }

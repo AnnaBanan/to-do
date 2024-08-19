@@ -3,7 +3,7 @@
     <div class="col-12 col-md-7 mx-auto">
       @if(TodoList){
         <h1>
-          {{ title }}
+          {{ TodoList.title }}
         </h1>
         @if (allTodos.length > 0) { There 
           @if(allTodos.length === 1) {is}@else{are} {{allTodos.length}} open  @if(allTodos.length === 1) {to-do}@else{to-dos}:
@@ -28,7 +28,7 @@
         } @else { <p class="my-5">There is nothing to do. Please enjoy your day! 🎉</p> }
         <hr />
         <p>Here you can add more to-dos:</p>
-        <app-todo-input></app-todo-input>
+        <app-todo-input [activeList]="TodoList"></app-todo-input>
       } @else {
         <p class="fw-bold">Sorry, could not find this list.</p>
       }
