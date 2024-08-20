@@ -25,10 +25,6 @@ export class SideNavComponent {
     {
       title: 'Work',
       todos: ['Update docs', 'Email boss', 'Submit PR']
-    },
-    {
-      title: 'heute',
-      todos: ['Kongs', 'Spülmaschine', 'Wäsche aufräumen', 'Balkon putzen']
     }
   ];
 
