@@ -22,7 +22,7 @@
         background: $primary; /* Solid color for the first 56px */
         background: linear-gradient(180deg, $primary 0%, $primary $headerHeight, rgba(124,78,193,1) 100%);
         height: 100vh;
-
-        a{ color: $light; }
     }
+
+    a{ color: $light; }
 }

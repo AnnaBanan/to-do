@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { TodoList } from '../types';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../services/menu.service';
@@ -37,8 +37,6 @@ export class SideNavComponent {
     this.todoListsMock.forEach(list => {
       this.todoService.addTodoList(list);
     });
-
   }
-
 
 }
