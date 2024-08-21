@@ -19,11 +19,10 @@ import { TodoList } from '../types';
   styleUrl: './todo-list.component.scss',
 })
 export class TodoListComponent {
-  @Input() list: TodoList | undefined;
   title = 'To-do List';
   allTodos: string[];
   val = '';
-  TodoList: TodoList;
+  TodoList?: TodoList;
   id = Number(this.route.snapshot.paramMap.get('index'));
 
   constructor(
@@ -33,18 +32,14 @@ export class TodoListComponent {
 
   ngOnInit() {
     this.todoService.initTodoService();
-    if (!this.list) {
-      this.getTodoList(this.id);
-    }
+    this.getTodoList(this.id);
   }
 
   ngDoCheck() {
-    if (!this.list) {
-      const id = Number(this.route.snapshot.paramMap.get('index'));
-      if (id !== this.id) {
-        this.id = id;
-        this.getTodoList(id);
-      }
+    const id = Number(this.route.snapshot.paramMap.get('index'));
+    if (id !== this.id) {
+      this.id = id;
+      this.getTodoList(id);
     }
   }
 
@@ -53,5 +48,13 @@ export class TodoListComponent {
       this.TodoList = this.todoService.todoListsArray()[id];
       this.allTodos = this.todoService.todoListsArray()[id].todos;
     }
+    else {
+      this.TodoList = undefined;
+    }
+  }
+
+  onDeleteList() {
+    this.todoService.deleteTodoList(this.id);
+    this.getTodoList(this.id);
   }
 }

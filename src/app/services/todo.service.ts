@@ -41,6 +41,11 @@ export class TodoService {
     todolist.todos.push(newTodo);
     this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
   }
+  
+  deleteTodoList(id: number){
+    this.todoListsArray().splice(id, 1);
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
+  }
 
      // this is old 
   editTodo(id: number, value: string) {
