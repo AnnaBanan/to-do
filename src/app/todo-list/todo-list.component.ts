@@ -36,7 +36,6 @@ export class TodoListComponent {
     if (!this.list) {
       this.getTodoList(this.id);
     }
-    console.log(this.TodoList);
   }
 
   ngDoCheck() {

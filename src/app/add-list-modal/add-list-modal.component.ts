@@ -1,8 +1,8 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, signal, ViewChild, WritableSignal } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { TodoList } from '../types';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { TodoItemComponent } from '../todo-item/todo-item-component';
 import { NgClass } from '@angular/common';
 
@@ -17,29 +17,30 @@ declare var bootstrap: any;
 })
 export class AddListModalComponent {
   title: WritableSignal<string> = signal('');
-  newList: TodoList;
+  newList: WritableSignal<TodoList> = signal({
+    title: '',
+    todos: []
+  });
+  @ViewChild('newListForm') newListForm!: NgForm;
 
   constructor(private todoService: TodoService){}
 
-  ngOnInit(){
-    this.resetNewList();
-  }
-
   resetNewList(){
-    this.newList = {
+    this.title.set('');
+    this.newList.set({
       title: '',
       todos: []
-    };
+    });
+    this.newListForm.resetForm();
   }
 
   updateTitle(){
-    this.newList.title = this.title();
-    this.title.set('');
+    this.newList().title = this.title();
   }
 
   saveList(){
     this.updateTitle();
-    this.todoService.addTodoList(this.newList);
+    this.todoService.addTodoList(this.newList());
     this.resetNewList();
 
     const modalElement = document.getElementById('addListModal');
