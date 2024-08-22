@@ -34,9 +34,10 @@ export class SideNavComponent {
   ) { }
 
   ngOnInit() {
-    this.todoListsMock.forEach(list => {
-      this.todoService.addTodoList(list);
-    });
+    this.todoService.initTodoService();
+    // this.todoListsMock.forEach(list => {
+    //   this.todoService.addTodoList(list);
+    // });
   }
 
 }

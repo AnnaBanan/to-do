@@ -47,16 +47,15 @@ export class TodoService {
     this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
   }
 
-     // this is old 
-  editTodo(id: number, value: string) {
-    this.todosArray()[id] = value;
+  editTodo(todolist: TodoList, id:number, value: string) {
+    todolist.todos[id] = value;
     this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
   }
 
-  deleteTodo(name:string, id: number) {
+  deleteTodo(todolist:TodoList, name:string, id: number) {
     this.doneItemsArray.push(name);
     this.updateLocalStorage(this.doneItemsKey, this.doneItemsArray);
-    this.todosArray().splice(id, 1);
+    todolist.todos.splice(id, 1);
     this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
   }
 

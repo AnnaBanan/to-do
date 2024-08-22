@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <div class="col-12 col-md-7 mx-auto">
       @if(!!TodoList){
@@ -12,6 +12,7 @@
           <app-todo-item-component
             [openTodo]="todo"
             [id]="$index"
+            [activeList]="TodoList"
           ></app-todo-item-component>
           }
         </ul>
