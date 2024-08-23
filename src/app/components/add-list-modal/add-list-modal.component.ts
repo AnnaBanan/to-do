@@ -1,6 +1,6 @@
 import { Component, signal, ViewChild, WritableSignal } from '@angular/core';
-import { TodoService } from '../services/todo.service';
-import { TodoList } from '../types';
+import { TodoService } from '../../services/todo.service';
+import { TodoList } from '../../types';
 import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TodoItemComponent } from '../todo-item/todo-item-component';

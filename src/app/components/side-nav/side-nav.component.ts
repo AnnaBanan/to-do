@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TodoList } from '../types';
+import { TodoList } from '../../types';
 import { CommonModule } from '@angular/common';
-import { MenuService } from '../services/menu.service';
+import { MenuService } from '../../services/menu.service';
 import { RouterLink } from '@angular/router';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-side-nav',

@@ -1,7 +1,7 @@
 import { Component, Input, signal, WritableSignal } from '@angular/core';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 import { FormsModule } from '@angular/forms';
-import { TodoList } from '../types';
+import { TodoList } from '../../types';
 
 @Component({
   selector: 'app-todo-input',

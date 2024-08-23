@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuService } from '../services/menu.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-header',
