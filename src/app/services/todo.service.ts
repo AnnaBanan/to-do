@@ -1,22 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
+import { TodoList } from '../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
 
-  private todoKey = 'todos';
+  private todoListsKey = 'todoLists';
   private doneItemsKey = 'doneItems'
-  todosArray: string[] = [];
+  todoListsArray: WritableSignal<TodoList[]> = signal([]);
+
+  todosArray: WritableSignal<string[]> = signal([]); // Todolist.todos
   doneItemsArray: string[] = [];
 
   constructor(private localStorage: LocalStorageService) {}
 
   initTodoService(){
-    const initialTodos = this.localStorage.getLocalStorage(this.todoKey);
+    const initialTodos = this.localStorage.getLocalStorage(this.todoListsKey);
     if (initialTodos) {
-      this.todosArray = JSON.parse(initialTodos);
+      this.todoListsArray.set(JSON.parse(initialTodos));
     }
     const initialDoneItems = this.localStorage.getLocalStorage(this.doneItemsKey);
     if (initialDoneItems) {
@@ -24,25 +27,36 @@ export class TodoService {
     }
   }
 
-  updateLocalStorage(key: string, array: string[]){
+  updateLocalStorage(key: string, array: TodoList[] | string[]){
     this.localStorage.setLocalStorage(key, JSON.stringify(array));
   }
 
-  deleteTodo(name:string, id: number) {
+
+  addTodoList(newList: TodoList){
+    this.todoListsArray().push(newList);
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
+  }
+
+  addTodo(todolist:TodoList, newTodo: string){
+    todolist.todos.push(newTodo);
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
+  }
+  
+  deleteTodoList(id: number){
+    this.todoListsArray().splice(id, 1);
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
+  }
+
+  editTodo(todolist: TodoList, id:number, value: string) {
+    todolist.todos[id] = value;
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
+  }
+
+  deleteTodo(todolist:TodoList, name:string, id: number) {
     this.doneItemsArray.push(name);
     this.updateLocalStorage(this.doneItemsKey, this.doneItemsArray);
-    this.todosArray.splice(id, 1);
-    this.updateLocalStorage(this.todoKey, this.todosArray);
-  }
-
-  editTodo(id: number, value: string) {
-    this.todosArray[id] = value;
-    this.updateLocalStorage(this.todoKey, this.todosArray);
-  }
-
-  addTodo(name: string){
-    this.todosArray.push(name);
-    this.updateLocalStorage(this.todoKey, this.todosArray);
+    todolist.todos.splice(id, 1);
+    this.updateLocalStorage(this.todoListsKey, this.todoListsArray());
   }
 
   resetDoneItems() {

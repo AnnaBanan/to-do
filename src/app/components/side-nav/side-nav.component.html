@@ -1,0 +1,27 @@
+<div class="side-nav" [ngClass]="{'active': menuService.isActive()}">
+  <h4 class="mx-3">To-do Lists</h4>
+  @if (todoService.todoListsArray().length === 0){
+  <p>No to do lists found</p>
+  }@else {
+  <nav>
+    @for (todoList of todoService.todoListsArray(); track $index){
+      <div class="card shadow m-3 bg-primary text-light">
+        <div class="card-body">
+            <h5 class="card-title">        
+              <a [routerLink]="['/todo-list', $index]">
+              {{ todoList.title }}
+          </a>
+        </h5>
+        <ul>
+          @for (todo of todoList.todos; track $index){
+          <li>
+            {{ todo }}
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+    }
+  </nav>
+  }
+</div>

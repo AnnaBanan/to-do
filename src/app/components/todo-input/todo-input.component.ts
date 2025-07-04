@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { TodoService } from '../services/todo.service';
+import { Component, Input, signal, WritableSignal } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
 import { FormsModule } from '@angular/forms';
+import { TodoList } from '../../types';
 
 @Component({
   selector: 'app-todo-input',
@@ -10,11 +11,12 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule]
 })
 export class TodoInputComponent {
-  name: string = '';
+  @Input() activeList: TodoList;
+  name: WritableSignal<string> =  signal('');
   constructor (private todoService: TodoService) {}
 
   updateTodos() {
-    this.todoService.addTodo(this.name);
-    this.name='';
+    this.todoService.addTodo(this.activeList, this.name());
+    this.name.set('');
   }
 }

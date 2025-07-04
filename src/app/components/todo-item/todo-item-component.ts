@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
+import { TodoList } from '../../types';
 
 @Component({
   selector: 'app-todo-item-component',
@@ -11,14 +12,14 @@ import { TodoService } from '../services/todo.service';
 export class TodoItemComponent {
   @Input() openTodo = '';
   @Input() id: number;
-  @Input() withActions: boolean = true;
+  @Input() activeList: TodoList;
   edit: boolean = false;
   @ViewChild('editInput') editInputElement: ElementRef;
 
   constructor(private todoService: TodoService) {}
 
   deleteTodoItem() {
-    this.todoService.deleteTodo(this.openTodo, this.id);
+    this.todoService.deleteTodo(this.activeList, this.openTodo, this.id);
   }
 
   editTodoItem() {
@@ -27,7 +28,7 @@ export class TodoItemComponent {
 
   changeTodo() {
     const value = this.editInputElement.nativeElement.value;
-    this.todoService.editTodo(this.id, value)
+    this.todoService.editTodo(this.activeList, this.id, value)
     this.edit = false;
   }
 }

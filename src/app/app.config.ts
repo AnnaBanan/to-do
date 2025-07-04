@@ -1,6 +1,6 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { TodoItemComponent } from './todo-item/todo-item-component';
+import { TodoItemComponent } from './components/todo-item/todo-item-component';
 
 
 import { routes } from './app.routes';

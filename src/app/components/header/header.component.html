@@ -1,0 +1,10 @@
+<header class="header">
+  <div class="menu">
+    <button class="animated-menu" [class.active]="menuService.isActive()" (click)="onMenuToggle()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addListModal">Add new to-do list</button>
+</header>

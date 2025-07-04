@@ -1,0 +1,46 @@
+<div class="modal fade" id="addListModal" tabindex="-1" aria-labelledby="addListModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a new to-do list</h5>
+                </div>
+                <div class="modal-body">
+                    <form #newListForm="ngForm">
+                    <p>Enter the title for your list:</p>
+                    <input class="form-control mb-3" name="title" [ngClass]="titleInput.invalid && titleInput.touched ? 'is-invalid' : ''" type="text" required placeholder="Enter a new title" [(ngModel)]="title" #titleInput="ngModel" (keydown.enter)="updateTitle()"/>
+                    @if(titleInput.invalid){
+                        <div class="invalid-feedback mt-n2 mb-2">
+                            Please provide a title for your to-do list.
+                        </div>
+                    }
+                    <p>Add all your todos here:</p>
+                    <app-todo-input [activeList]="newList()"></app-todo-input>
+                </form>
+                        <hr>
+                        <p>Here you can see a preview of your new list:</p>
+
+                        <div class="card shadow-sm mx-2">
+                            <div class="card-body">
+                                <h5 class="card-title">{{titleInput.value}}</h5>
+                                <ul>
+                                    @for (todo of newList().todos; track $index) {
+                                    <app-todo-item-component
+                                    [openTodo]="todo"
+                                    [id]="$index"
+                                    [activeList]="newList()"
+                                    ></app-todo-item-component>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" [disabled]="titleInput.invalid" class="btn btn-primary" (click)="saveList()">Save to-do list</button>
+                </div>
+            </div>
+        
+    </div>
+</div>

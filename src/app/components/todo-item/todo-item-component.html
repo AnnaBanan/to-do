@@ -2,10 +2,10 @@
     @if (!edit){
     <div class="d-flex justify-content-between">
         <span>{{openTodo}}</span>
-        @if (withActions){
+        @if (activeList){
             <span>
-                <button type="submit" (click)="edit = true" class="btn btn-success btn-sm ms-2">edit</button>
-                <button type="submit" (click)="deleteTodoItem()" class="btn btn-primary btn-sm ms-2">done</button>
+                <button type="submit" (click)="edit = true" class="btn btn-primary btn-sm ms-2">edit</button>
+                <button type="submit" (click)="deleteTodoItem()" class="btn btn-secondary btn-sm ms-2">done</button>
             </span>
         }
     </div>

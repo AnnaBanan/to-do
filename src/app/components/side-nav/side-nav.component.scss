@@ -1,0 +1,28 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import 'variables';
+
+.side-nav {
+    @include media-breakpoint-down(md) {
+        display: none;
+        &.active {
+            display: block;
+            position: absolute;
+            top: $headerHeight;
+            background: white;
+            z-index: 900;
+            width: 100%;
+            height: calc(100vh - $headerHeight);
+        }
+    }
+    @include media-breakpoint-up(md) {
+        padding-top: $headerHeight;
+        color: $light;
+        background: $primary; /* Solid color for the first 56px */
+        background: linear-gradient(180deg, $primary 0%, $primary $headerHeight, rgba(124,78,193,1) 100%);
+        height: 100vh;
+    }
+
+    a{ color: $light; }
+}
