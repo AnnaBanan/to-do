@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-header',
+    imports: [CommonModule],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
+    encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
 

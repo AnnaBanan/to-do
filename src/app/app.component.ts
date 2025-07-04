@@ -4,11 +4,10 @@ import { SideNavComponent } from "./components/side-nav/side-nav.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { AddListModalComponent } from "./components/add-list-modal/add-list-modal.component";
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, SideNavComponent, HeaderComponent, AddListModalComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [RouterOutlet, SideNavComponent, HeaderComponent, AddListModalComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
 

@@ -9,11 +9,10 @@ import { NgClass } from '@angular/common';
 declare var bootstrap: any;
 
 @Component({
-  selector: 'app-add-list-modal',
-  standalone: true,
-  imports: [TodoInputComponent, FormsModule, TodoItemComponent, NgClass],
-  templateUrl: './add-list-modal.component.html',
-  styleUrl: './add-list-modal.component.scss'
+    selector: 'app-add-list-modal',
+    imports: [TodoInputComponent, FormsModule, TodoItemComponent, NgClass],
+    templateUrl: './add-list-modal.component.html',
+    styleUrl: './add-list-modal.component.scss'
 })
 export class AddListModalComponent {
   title: WritableSignal<string> = signal('');
