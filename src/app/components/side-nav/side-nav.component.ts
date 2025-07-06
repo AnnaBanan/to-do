@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
-  selector: 'app-side-nav',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss'
+    selector: 'app-side-nav',
+    imports: [CommonModule, RouterLink],
+    templateUrl: './side-nav.component.html',
+    styleUrl: './side-nav.component.scss'
 })
 export class SideNavComponent {
   todoListsMock: TodoList[] = [

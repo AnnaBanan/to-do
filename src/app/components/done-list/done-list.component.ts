@@ -5,11 +5,10 @@ import { TodoItemComponent } from "../todo-item/todo-item-component";
 import { TodoService } from '../../services/todo.service';
 
 @Component({
-  selector: 'app-done-list',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, TodoItemComponent],
-  templateUrl: './done-list.component.html',
-  styleUrl: './done-list.component.scss',
+    selector: 'app-done-list',
+    imports: [RouterLink, RouterLinkActive, TodoItemComponent],
+    templateUrl: './done-list.component.html',
+    styleUrl: './done-list.component.scss'
 })
 export class DoneListComponent {
   doneItems: string[] = []

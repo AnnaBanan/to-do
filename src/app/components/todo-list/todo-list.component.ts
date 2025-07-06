@@ -7,16 +7,15 @@ import { RouterLinkActive } from '@angular/router';
 import { TodoList } from '../../types';
 
 @Component({
-  selector: 'app-todo-list',
-  standalone: true,
-  imports: [
-    TodoInputComponent,
-    TodoItemComponent,
-    RouterLink,
-    RouterLinkActive,
-  ],
-  templateUrl: './todo-list.component.html',
-  styleUrl: './todo-list.component.scss',
+    selector: 'app-todo-list',
+    imports: [
+        TodoInputComponent,
+        TodoItemComponent,
+        RouterLink,
+        RouterLinkActive,
+    ],
+    templateUrl: './todo-list.component.html',
+    styleUrl: './todo-list.component.scss'
 })
 export class TodoListComponent {
   title = 'To-do List';

@@ -3,11 +3,10 @@ import { TodoService } from '../../services/todo.service';
 import { TodoList } from '../../types';
 
 @Component({
-  selector: 'app-todo-item-component',
-  standalone: true,
-  imports: [],
-  templateUrl: './todo-item-component.html',
-  styleUrl: './todo-item-component.scss',
+    selector: 'app-todo-item-component',
+    imports: [],
+    templateUrl: './todo-item-component.html',
+    styleUrl: './todo-item-component.scss'
 })
 export class TodoItemComponent {
   @Input() openTodo = '';

@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { TodoList } from '../../types';
 
 @Component({
-  selector: 'app-todo-input',
-  standalone: true,
-  templateUrl: './todo-input.component.html',
-  styleUrl: './todo-input.component.scss',
-  imports: [FormsModule]
+    selector: 'app-todo-input',
+    templateUrl: './todo-input.component.html',
+    styleUrl: './todo-input.component.scss',
+    imports: [FormsModule]
 })
 export class TodoInputComponent {
   @Input() activeList: TodoList;
